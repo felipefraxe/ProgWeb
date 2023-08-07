@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Instituto de Computação</title>
+</head>
+<body>
+    <header>
+        <h1>Formulário de Contato</h1>
+    </header>
+    <main>
+        <form action="" method="POST">
+            <fieldset>
+                <legend>Dados Básicos</legend>
+
+                <label for="nome">Nome:</label>
+                <input name="nome" id="nome" placeholder="Fulano" autofocus />
+                <br />
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" placeholder="seunome@dominio.com.br" />
+                <br />
+
+                <label for="site">Website:</label>
+                <input type="url" name="site" id="site" value="http://" />
+            </fieldset>
+
+            <fieldset>
+                <legend>Seu curso no Instituto de Computação</legend>
+
+                <label for="cc">Ciência da Computação</label>
+                <input type="radio" name="curso" id="cc" checked />
+                <br />
+
+                <label for="si">Sistemas de Informação</label>
+                <input type="radio" name="curso" id="si" />
+                <br />
+
+                <label for="ec">Engenharia da Computação</label>
+                <input type="radio" name="curso" id="ec" />
+            </fieldset>
+
+            <fieldset>
+                <legend>Assinale as linguagens já usadas por você:</legend>
+            
+                <label for="java">Java</label>
+                <input type="checkbox" id="java" name="lang" value="java" />
+
+                <label for="c">C</label>
+                <input type="checkbox" id="c" name="lang" value="c" />
+
+                <label for="c++">C++</label>
+                <input type="checkbox" id="c++" name="lang" value="c++" />
+
+                <label for="perl">Perl</label>
+                <input type="checkbox" id="perl" name="lang" value="perl" />
+
+                <label for="python">Python</label>
+                <input type="checkbox" id="python" name="lang" value="python" />
+
+                <label for="javascript">JavaScript</label>
+                <input type="checkbox" id="javascript" name="lang" value="javascript" />
+            </fieldset>
+
+            <fieldset>
+                <legend>Dados Complementares</legend>
+
+                <label for="fav-color">Cor favorita</label>
+                <input type="color" name="fav-color" id="fav-color" />
+                <br />
+
+                <label for="birth-date">Data de nascimento</label>
+                <input type="date" name="birth-date" id="birth-date" />
+                <br />
+
+                <label for="freshman-year">Ano de entrada em seu curso do IComp</label>
+                <input type="number" name="freshman-year" id="freshman-year" value="2020" min="2010" max="2023" />
+                <br />
+
+                <label for="site-rate">Nota para este site</label>
+                <input type="range" name="site-rate" id="site-rate" value="0" />
+            </fieldset>
+
+            <fieldset>
+                <legend>Área de Atuação</legend>
+                <select name="research-area" id="research-area">
+                    <option value="1">Banco de Dados</option>
+                    <option value="2">Educação a Distância</option>
+                    <option value="3">Engenharia de Software</option>
+                    <option value="4">Otimização</option>
+                    <option value="5">Programação para a Web</option>
+                    <option value="6">Recuperação de Informação</option>
+                    <option value="7">Redes de Computadores</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Submeta seu currículo vitae</legend>
+                <input type="file" name="curriculum" id="curriculum" />
+            </fieldset>
+
+            <fieldset>
+                <legend>Escreva sua mensagem</legend>
+                <textarea name="message" id="message" cols="65" rows="5" value="Este é o valor padrão!"></textarea>
+            </fieldset>
+
+            <input type="reset" value="Resetar dados" />
+            <input type="submit" value="Enviar mensagem" />
+        </form>
+    </main>
+</body>
+</html>
