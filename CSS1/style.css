@@ -1,0 +1,8 @@
+.txt {
+    border: 20px solid black;
+    border-radius: 30px 100px 30px 150px;
+    font-size: 32px;
+    padding: 34px;
+    padding-left: 100px;
+    background-color: rgb(194, 194, 194);
+}
