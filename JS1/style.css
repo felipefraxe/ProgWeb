@@ -1,0 +1,13 @@
+div {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+table {
+    margin: 15px;
+}
+
+td {
+    text-align: center;
+}
