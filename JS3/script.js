@@ -25,22 +25,22 @@ class IntegerSet {
         let j = 0;
         while(i < this.set.length && j < other.set.length) {
             if(this.set[i])
-            union.insert(i);
-        if(other.set[j])
-        union.insert(j);
+                union.insert(i);
+            if(other.set[j])
+                union.insert(j);
             i++;
             j++;
         }
         
         while(i < this.set.length) {
             if(this.set[i])
-            union.insert(i);
-        i++;
+                union.insert(i);
+            i++;
         }
         
         while(j < other.set.length) {
             if(other.set[j])
-            union.insert(j);
+                union.insert(j);
             j++;
         }
         
@@ -51,8 +51,8 @@ class IntegerSet {
         const intersec = new IntegerSet(Math.min(this.maxVal, other.maxVal));
         for(let i = 0; i < intersec.length; i++) {
             if(this.set[i] && this.set[i] === other.set[i])
-            intersec.insert(i);
-    }
+                intersec.insert(i);
+        }
         return intersec;
     }
 
@@ -62,21 +62,21 @@ class IntegerSet {
         let j = 0;
         while(i < this.set.length && j < other.set.length) {
             if(this.set[i] && this.set[i] !== other.set[j])
-            diff.insert(i);
-        i++;
-        j++;
-    }
+                diff.insert(i);
+            i++;
+            j++;
+        }
 
         while(i < this.set.length) {
             if(this.set[i])
-            un.insert(i);
-        i++;
+                un.insert(i);
+            i++;
+        }
+
+        return diff;
     }
 
-    return diff;
-}
-
-toString() {
+    toString() {
         let str = "";
         for(let i = 0; i < this.set.length; i++) {
             str += `${i}: ${this.set[i]}`;
