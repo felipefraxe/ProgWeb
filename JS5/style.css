@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+    width: 15%;
+    margin-top: 7%;
+}
+
+.graph {
+    background-color: red;
+}

@@ -4,21 +4,21 @@ class IntegerSet {
         this.maxVal = maxVal;
         this.set = Array(maxVal + 1).fill(false);
     }
-    
+
     _editVal(num, op) {
         if(num < 0 || num > this.maxVal)
             return;
         this.set[num] = op;
     }
-    
+
     insert(num) {
         this._editVal(num, true);
     }
-    
+
     remove(num) {
         this._editVal(num, false);
     }
-    
+
     union(other) {
         const union = new IntegerSet(Math.max(this.maxVal, other.maxVal));
         let i = 0;
@@ -31,22 +31,22 @@ class IntegerSet {
             i++;
             j++;
         }
-        
+
         while(i < this.set.length) {
             if(this.set[i])
                 union.insert(i);
             i++;
         }
-        
+
         while(j < other.set.length) {
             if(other.set[j])
                 union.insert(j);
             j++;
         }
-        
+
         return union;
     }
-    
+
     intersection(other) {
         const intersec = new IntegerSet(Math.min(this.maxVal, other.maxVal));
         for(let i = 0; i < intersec.length; i++) {
