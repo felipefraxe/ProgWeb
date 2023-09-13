@@ -1,0 +1,2 @@
+document.querySelector("span");
+document.getElementByTagName("span");
