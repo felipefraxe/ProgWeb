@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    border: solid black 5px;
+    width: 600px;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box1 {
+    border: solid green 5px;
+    background-color: red;
+}
+
+.box2 {
+    border: solid yellow 5px;
+    background-color: blue;
+}
+
+p {
+    font-size: 32px;
+}
