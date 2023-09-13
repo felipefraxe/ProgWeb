@@ -2,4 +2,4 @@ Na linguagem Javascript, qual é a diferença entre == e === ?
 
 A comparação com apenas dois "=" não leva em consideração o tipo dos dados comparados.
 Por exemplo, a comparação entre a string "1" e o number 1 no formato "1" == 1 retorna verdadeiro.
-Já com os 3 "===", o tipo dos dados é levado em conta, portanto, a compração do exemplo anterior retorna falso.
+Já com os 3 "=", o tipo dos dados é levado em conta, portanto, a compração do exemplo anterior "1" === 1 retorna falso.
