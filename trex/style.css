@@ -2,6 +2,8 @@
     border: 1px solid black;
     position: relative;
     overflow: hidden;
+    width: 1024px;
+    height: 300px;
     z-index: 1;
 }
   
@@ -18,12 +20,10 @@
 .dino {
     background-image: url(img/sprite.png);
     position: absolute;
-    width: 66px;
     left: 20px;
-    height: 70px;
     z-index: 3;
 }
-  
+
 .nuvem {
     background-image: url(img/sprite.png);
     background-position: -125px -2px;
@@ -35,10 +35,42 @@
 
 .cacto {
     background-image: url(img/sprite.png);
-    background-position: -330px -4px;
+    background-position: -334px -2px;
     position: absolute;
-    width: 30px;
-    height: 52px;
+    width: 26px;
+    height: 53px;
     z-index: 3;
     bottom: 2px;
+}
+
+.score {
+    background-image: url(img/sprite.png);
+    position: absolute;
+    background-position-y: -2px;
+    width: 15px;
+    height: 14px;
+    top: 2px;
+    z-index: 3;
+}
+
+.gameOver {
+    background-image: url(img/sprite.png);
+    position: absolute;
+    background-position: -971px -20px;
+    width: 287px;
+    height: 20px;
+    left: 369px;
+    top: 100px;
+    z-index: 4;
+}
+
+.restartBtn {
+    background-image: url(img/sprite.png);
+    position: absolute;
+    background-position: 1px 1px;
+    width: 55px;
+    height: 49px;
+    top: 140px;
+    left: 485px;
+    z-index: 4;
 }
