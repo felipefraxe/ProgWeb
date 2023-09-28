@@ -36,7 +36,7 @@
         }
 
         mover() {
-            this.chao.style.backgroundPositionX = `${parseInt(this.chao.style.backgroundPositionX) - 1}px`;
+            this.chao.style.backgroundPositionX = `${(parseInt(this.chao.style.backgroundPositionX) - 1)}px`;
         }
 
         changeDayNight() {
@@ -89,7 +89,7 @@
         }
         
         correr() {
-            if(this.#status === 0) {
+            if(this.#status === 0 && frame % 20 === 0) {
                 this.element.style.backgroundPositionX = this.element.style.backgroundPositionX === this.backgroundPositionsX.correndo1 ? this.backgroundPositionsX.correndo2 : this.backgroundPositionsX.correndo1;
             } else if(this.#status === 1) {
                 this.element.style.backgroundPositionX = this.backgroundPositionsX.pulando;
@@ -100,7 +100,7 @@
                 this.element.style.bottom = `${parseInt(this.element.style.bottom) - 1}px`;
                 if(parseInt(this.element.style.bottom) <= this.altumaMinima)
                     this.status = 0;
-            } else if(this.#status === 3) {
+            } else if(this.#status === 3 && frame % 20 === 0) {
                 this.element.style.backgroundPositionX = this.element.style.backgroundPositionX === this.backgroundPositionsX.agachado1 ? this.backgroundPositionsX.agachado2 : this.backgroundPositionsX.agachado1;
             }
         }
@@ -116,7 +116,7 @@
         }
 
         mover() {
-            this.element.style.right = `${parseInt(this.element.style.right) + 1}px`;
+            this.element.style.right = `${(parseInt(this.element.style.right) + 1)}px`;
         }
     }
 
@@ -139,7 +139,7 @@
         }
 
         mover() {
-            this.element.style.right = `${parseInt(this.element.style.right) + 1}px`;
+            this.element.style.right = `${(parseInt(this.element.style.right) + 1)}px`;
         }
     }
 
@@ -158,7 +158,10 @@
         }
 
         mover() {
+            
             this.element.style.right = `${parseInt(this.element.style.right) + 2}px`;
+            if(frame % 20 !== 0)
+                return;
             if(this.element.style.backgroundPositionX === "-195px") {
                 this.element.style.backgroundPositionX = "-264px";
                 this.element.style.backgroundPositionY = "-2px";
@@ -195,10 +198,14 @@
     }
 
     function init() {
-        gameLoop = setInterval(run, 1000 / (FPS * 64));
+        gameLoop = setInterval(run, 1000 / FPS);
         dayLoop = setInterval(() => {
             deserto.changeDayNight();
-            FPS += 10;
+            if(!paused) {
+                FPS += 10;
+                clearInterval(gameLoop);
+                gameLoop = setInterval(run, 1000 / FPS);
+            }
         }, 1000 * 60);
     }
 
@@ -212,6 +219,7 @@
         restartBtn.className = "restartBtn";
         const gameOverMsg = document.createElement("div");
         gameOverMsg.className = "gameOver";
+        FPS = 300;
         restartBtn.addEventListener("click", () => {
             dino.element.style.bottom = `${dino.altumaMinima}px`;
 
@@ -254,7 +262,6 @@
     function run() {
         if(paused)
             return;
-
         frame = (frame + 1) % FPS;
         deserto.mover();
         dino.correr();
