@@ -3,10 +3,10 @@
     let FPS = 300;
     const WIDTH = 1024;
     const HEIGHT = 300;
-    const PROB_NUVEM = 0.2;
+    const PROB_NUVEM = 0.1;
     const PROB_CACTO = 0.4;
-    const PROB_PASSARO = 0.1;
-    
+    const PROB_PASSARO = 0.05;
+
     let score_board_digits = 5;
     let gameLoop;
     let frame = 0;
@@ -67,7 +67,7 @@
             }
             this.#status = 0; // 0-correndo, 1-subindo, 2-descendo, 3-agachado
             this.altumaMinima = 2;
-            this.altumaMaxima = 120;
+            this.altumaMaxima = 115;
             this.element = document.createElement("div");
             this.element.className = "dino";
             this.element.style.backgroundPositionX = this.backgroundPositionsX.parado;
@@ -158,7 +158,7 @@
         }
 
         mover() {
-            this.element.style.right = `${parseInt(this.element.style.right) + 1}px`;
+            this.element.style.right = `${parseInt(this.element.style.right) + 2}px`;
             if(this.element.style.backgroundPositionX === "-195px") {
                 this.element.style.backgroundPositionX = "-264px";
                 this.element.style.backgroundPositionY = "-2px";
@@ -195,13 +195,13 @@
     }
 
     function init() {
-        gameLoop = setInterval(run, 1000 / FPS);
+        gameLoop = setInterval(run, 1000 / (FPS * 64));
         dayLoop = setInterval(() => {
             deserto.changeDayNight();
-            FPS *= 1.05;
+            FPS += 10;
         }, 1000 * 60);
     }
-    
+
     function gameOver() {
         clearInterval(gameLoop);
         clearInterval(dayLoop);
@@ -256,7 +256,6 @@
             return;
 
         frame = (frame + 1) % FPS;
-
         deserto.mover();
         dino.correr();
 
@@ -273,7 +272,7 @@
 
         if(Math.random() * 100 <= PROB_PASSARO) {
             const passaro = new Passaro(Math.floor(Math.random() * 3));
-            if(passaros.length === 0 || (parseInt(passaro.element.style.right) < parseInt(passaros[passaro.length - 1].element.style.right) - 300))
+            if(passaros.length === 0 || (parseInt(passaro.element.style.right) < parseInt(passaros[passaros.length - 1].element.style.right) - 300))
                 passaros.push(passaro);
             else
                 passaro.element.remove();
@@ -281,12 +280,11 @@
 
         cactos.forEach(cacto => {
             cacto.mover();
-    
             const cactoXInterval = [WIDTH - parseInt(cacto.element.style.right) - parseInt(cacto.element.style.width), WIDTH - parseInt(cacto.element.style.right)];
-            const dinoXInterval = [parseInt(dino.element.style.left) + 15, parseInt(dino.element.style.left) + parseInt(dino.element.style.width) - 20];
+            const dinoXInterval = [parseInt(dino.element.style.left) + 20, parseInt(dino.element.style.left) + parseInt(dino.element.style.width) - 20];
             if(((dinoXInterval[0] >= cactoXInterval[0] && dinoXInterval[0] <= cactoXInterval[1])
                 || (dinoXInterval[1] >= cactoXInterval[0] && dinoXInterval[1] <= cactoXInterval[1]))
-                && (parseInt(dino.element.style.bottom) < parseInt(cacto.element.style.height) - 15 )) {
+                && (parseInt(dino.element.style.bottom) + 20 < parseInt(cacto.element.style.height))) {
                     gameOver();
             }
 
@@ -296,19 +294,25 @@
             }
         });
 
-
         passaros.forEach(passaro => {
             passaro.mover();
 
-            const passaroXInterval = [WIDTH - parseInt(passaro.element.style.right) - parseInt(passaro.element.style.width), WIDTH - parseInt(passaro.element.style.right)];
-            const dinoXInterval = [parseInt(dino.element.style.left) + 15, parseInt(dino.element.style.left) + parseInt(dino.element.style.width) - 20];
-            /* if(((dinoXInterval[0] >= cactoXInterval[0] && dinoXInterval[0] <= cactoXInterval[1])
-                || (dinoXInterval[1] >= cactoXInterval[0] && dinoXInterval[1] <= cactoXInterval[1]))
-                && (parseInt(dino.element.style.bottom) < parseInt(cacto.element.style.height) - 15 )) {
+            const passaroInterval = [
+                [WIDTH - parseInt(passaro.element.style.right) - parseInt(passaro.element.style.width), WIDTH - parseInt(passaro.element.style.right)],
+                [parseInt(passaro.element.style.top), parseInt(passaro.element.style.top) + parseInt(passaro.element.style.height)]
+            ];
+            const dinoInterval = [
+                [parseInt(dino.element.style.left) + 20, parseInt(dino.element.style.left) + parseInt(dino.element.style.width) - 20],
+                [HEIGHT - parseInt(dino.element.style.bottom) - parseInt(dino.element.style.height) + 30, HEIGHT - parseInt(dino.element.style.bottom) - 15]
+            ];
+            if(((dinoInterval[0][0] >= passaroInterval[0][0] && dinoInterval[0][0] <= passaroInterval[0][1])
+                || (dinoInterval[0][1] >= passaroInterval[0][0] && dinoInterval[0][1] <= passaroInterval[0][1]))
+                && (((dinoInterval[1][0] >= passaroInterval[1][0] && dinoInterval[1][0] <= passaroInterval[1][1])
+                || (dinoInterval[1][1] >= passaroInterval[1][0] && dinoInterval[1][1] <= passaroInterval[1][1])))) {
                     gameOver();
-            } */
+            }
 
-            if(passaroXInterval[1] < 0) {
+            if(passaroInterval[0][1] < 0) {
                 passaros.shift();
                 passaro.element.remove();
             }
@@ -355,11 +359,8 @@
                 dino.element.style.backgroundPositionY = "-27px";
             }
         } else if(key === "ArrowUp") {
-            if(!paused && dino.status !== 1) {
-                dino.status = dino.status === 0 ? 1 : 0;
-                dino.element.style.width = "66px";
-                dino.element.style.height = "70px";
-                dino.element.style.backgroundPositionY = "-2px";
+            if(!paused && dino.status === 0) {
+                dino.status = 1;
             }
         }
     });

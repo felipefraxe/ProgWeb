@@ -19,7 +19,6 @@
     background-image: url(img/sprite.png);
     position: absolute;
     z-index: 3;
-    border: solid red 2px;
 }
 
 .nuvem {
@@ -37,7 +36,6 @@
     background-position-y: -2px;
     z-index: 3;
     bottom: 2px;
-    border: solid red 2px;
 }
 
 .score {
@@ -86,4 +84,5 @@
 .passaro {
     background-image: url(img/sprite.png);
     position: absolute;
+    z-index: 3;
 }
