@@ -1,3 +1,6 @@
+/* Código desenvolvido corretamente */
+/* Nota: 2.0 */
+
 (() => {
     document.querySelector(".soma").addEventListener("click", () => {
         const num1 = parseInt(prompt("Digite um número"));

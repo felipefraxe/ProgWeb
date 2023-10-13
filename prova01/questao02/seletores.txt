@@ -1,3 +1,6 @@
+Seletores identificados corretamente
+Nota: 2.0
+
 document.querySelector("span");
 document.querySelector("p > span");
 document.querySelector("span.cl1");

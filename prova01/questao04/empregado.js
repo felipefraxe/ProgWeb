@@ -1,3 +1,6 @@
+/* Código desenvolvido corretamente */
+/* Nota: 2.0 */
+
 class Empregado {
     #nome;
     #salario;
@@ -19,7 +22,7 @@ class Empregado {
     }
 
     set salario(salario) {
-        if(salario < 0) {
+        if (salario < 0) {
             console.error("Salário negativo");
             return;
         }
