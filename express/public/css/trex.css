@@ -1,0 +1,88 @@
+.deserto {
+    border: 1px solid black;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+  
+.chao {
+    background-image: url(img/sprite.png);
+    position: absolute;
+    bottom: 0px;
+    background-position-y: -78px;
+    width: 1831px;
+    height: 20px;
+    z-index: 2;
+}
+  
+.dino {
+    background-image: url(img/sprite.png);
+    position: absolute;
+    z-index: 3;
+}
+
+.nuvem {
+    background-image: url(img/sprite.png);
+    background-position: -125px -2px;
+    position: absolute;
+    width: 70px;
+    height: 20px;
+    z-index: 2;
+}
+
+.cacto {
+    background-image: url(img/sprite.png);
+    position: absolute;
+    background-position-y: -2px;
+    z-index: 3;
+    bottom: 2px;
+}
+
+.score {
+    background-image: url(img/sprite.png);
+    position: absolute;
+    background-position-y: -2px;
+    width: 15px;
+    height: 14px;
+    top: 2px;
+    z-index: 3;
+}
+
+.gameOver {
+    background-image: url(img/sprite.png);
+    position: absolute;
+    background-position: -971px -20px;
+    width: 287px;
+    height: 20px;
+    left: 369px;
+    top: 100px;
+    z-index: 4;
+}
+
+.restartBtn {
+    background-image: url(img/sprite.png);
+    position: absolute;
+    background-position: 1px 1px;
+    width: 55px;
+    height: 49px;
+    top: 140px;
+    left: 485px;
+    z-index: 4;
+}
+
+.lua {
+    background-image: url(img/sprite.png);
+    position: absolute;
+    background-position: -806px -2px;
+    width: 60px;
+    height: 59px;
+    top: 0;
+    left: 482px;
+    z-index: 1;
+}
+
+.passaro {
+    background-image: url(img/sprite.png);
+    position: absolute;
+    z-index: 3;
+}
