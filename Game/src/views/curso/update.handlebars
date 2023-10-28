@@ -1,0 +1,55 @@
+<h1>Edição de Curso</h1>
+<form action="/curso/update/{{curso.id}}" method="post">
+
+    <div class="form-group">
+        <label class="col-form-label mt-4" for="sigla">Sigla</label>
+        <input
+            class="form-control"
+            placeholder="Informe a sigla do curso"
+            id="sigla"
+            name="sigla"
+            value="{{curso.sigla}}"
+        />
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label mt-4" for="nome">Nome do Curso</label>
+        <input
+            class="form-control"
+            placeholder="Informe o nome do curso"
+            id="nome"
+            name="nome"
+            value="{{curso.nome}}"
+        />
+    </div>
+
+    <div class="form-group">
+      <label for="descricao" class="form-label mt-4">Descrição</label>
+      <textarea class="form-control" id="descricao" name="descricao" rows="3">{{curso.descricao}}</textarea>
+    </div>
+
+    <fieldset class="form-group">
+      <legend class="mt-4">Áreas de Conhecimento</legend>
+      <div class="form-check">
+            <input class="form-check-input" type="radio" name="area" id="1" value="1" checked="" />
+        <label class="form-check-label" for="1">
+            Ciências Exatas
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="area" id="2" value="2" />
+        <label class="form-check-label" for="2">
+            Ciências Humanas
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="area" id="3" value="3" />
+        <label class="form-check-label" for="optionsRadios3">
+            Ciências Biológicas
+        </label>
+      </div>
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary mt-4">Atualizar</button>
+
+</form>

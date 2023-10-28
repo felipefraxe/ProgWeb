@@ -15,6 +15,7 @@ app.set("view engine", "handlebars");
 app.set("views", `${__dirname}/views`);
 
 app.use(logger("complete"));
+app.use(express.urlencoded({extended: false}));
 app.use(sass({
     src: `${__dirname}/../public/scss`,
     dest: `${__dirname}/../public/css`,
@@ -26,6 +27,7 @@ app.use("/js", [
     express.static(`${__dirname}/../public/js`),
     express.static(`${__dirname}/../node_modules/bootstrap/dist/js/`)
 ]);
+
 
 app.use(router);
 
