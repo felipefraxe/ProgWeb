@@ -24,6 +24,7 @@
             this.element.className = "deserto";
             this.element.style.width = `${WIDTH}px`;
             this.element.style.height = `${HEIGHT}px`;
+            this.element.style.backgroundColor = this.bgColor;
             document.getElementById("game").appendChild(this.element);
   
             this.lua = document.createElement("div");
